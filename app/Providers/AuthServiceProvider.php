@@ -25,20 +25,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Auth::viaRequest('custom-token', function ($request) {
-            
-            if (!$request->remember_token) {
-                return null;
-            }else {
-                $user = User::where('remember_token', $request->remember_token)->first();
-                if ($user) {
-                    Auth::login($user);
-                    return $user;
-                }
-                return null;
-            }
-        });
-        $this->registerPolicies();
     }
 }

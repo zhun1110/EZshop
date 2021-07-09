@@ -18,7 +18,7 @@ use App\Models\AdminAccount;
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::group(['middleware' => ['Admin']], function () {
-        Route::get('/home', [AdminController::class, 'Index']);
+        Route::get('/home', [AdminController::class, 'index'])->name('adminhome');
     });
     Route::get('/login', [AdminController::class, 'AdminLoginView'])->name('AdminLoginView');
     Route::post('/adminlogin',[AdminController::class,'AdminLogin']); 
