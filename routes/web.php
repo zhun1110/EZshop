@@ -19,7 +19,15 @@ use App\Http\Controllers\HomeController;
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::group(['middleware' => ['Admin']], function () {
         Route::get('/product', [ProductController::class, 'index'])->name('product');
+        Route::get('/product/store', [ProductController::class, 'store'])->name('productAdd');
+        Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('productEdit');
+
+        Route::get('/product/del/{id}', [ProductController::class, 'del'])->name('productshow');
+        Route::post('/product/create', [ProductController::class, 'create']);
+        Route::post('/product/edit', [ProductController::class, 'edit']);
+
     });
+    
     Route::get('/login', [AdminController::class, 'AdminLoginView'])->name('AdminLoginView');
     Route::post('/adminlogin',[AdminController::class,'AdminLogin']); 
 });

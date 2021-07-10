@@ -33,7 +33,7 @@
     </ul>
 </div>
 <div class="col-8">
-    <button type="button" class="btn btn-primary">建立商品</button>
+    <button type="button" onclick="location.href='/admin/product/store'" class="btn btn-primary" href>建立商品</button>
 
     <table class="table" style="margin-top: 10px;">
         <thead>
@@ -47,17 +47,19 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($ProductData as $val)
             <tr>
-                <th scope="row">1</th>
-                <td>可樂</td>
-                <td>商品圖片</td>
-                <td>20$</td>
-                <td>1</td>
+                <th scope="row">{{$val['id']}}</th>
+                <td>{{$val['product_name']}}</td>
+                <td>{{$val['explanation']}}</td>
+                <td>{{$val['price']}}</td>
+                <td>{{$val['quantity']}}</td>
                 <td>
-                    <button type="button" class="btn btn-success">編輯</button>
-                    <button type="button" class="btn btn-danger">刪除</button>
+                    <button onclick="location.href='/admin/product/show/{{ $val['id'] }}'" type="button" class="btn btn-success">編輯</button>
+                    <button onclick="location.href='/admin/product/del/{{ $val['id'] }}'" type="button" class="btn btn-danger">刪除</button>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
