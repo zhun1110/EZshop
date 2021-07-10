@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
-use App\Models\AdminAccount;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ use App\Models\AdminAccount;
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::group(['middleware' => ['Admin']], function () {
-        Route::get('/home', [AdminController::class, 'index'])->name('adminhome');
+        Route::get('/product', [ProductController::class, 'index'])->name('product');
     });
     Route::get('/login', [AdminController::class, 'AdminLoginView'])->name('AdminLoginView');
     Route::post('/adminlogin',[AdminController::class,'AdminLogin']); 

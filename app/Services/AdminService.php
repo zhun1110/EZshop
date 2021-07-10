@@ -14,7 +14,7 @@ class AdminService
         $credentials = array('account' => $request->account, 'password' => $request->password);
         if (Auth::guard('admin')->attempt($credentials))
         {
-            return redirect()->route('adminhome');
+            return redirect()->route('product');
         }else{
             $error_msg = [
                 'msg' => [

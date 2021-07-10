@@ -15,7 +15,7 @@ class AdminController extends Controller
         $this->AdminService = $AdminService;
     }
     public function index(){
-        echo '後台首頁' ; 
+        return view('/admin/component/shop');
     }
     public function AdminLoginView()
     {
