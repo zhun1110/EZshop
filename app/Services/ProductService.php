@@ -44,4 +44,11 @@ class ProductService
             'is_del'=> '1'
         ]);
     }
+    public function getdatalist($ids){
+        $Products = Product::whereIn('id',$ids)->get();
+        return $Products->toArray();
+    }
+    public function Buy($request){
+        return true ;
+    }
 }

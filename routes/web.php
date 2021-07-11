@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +21,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/product', [ProductController::class, 'index'])->name('product');
         Route::get('/product/store', [ProductController::class, 'store'])->name('productAdd');
         Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('productEdit');
-
         Route::get('/product/del/{id}', [ProductController::class, 'del'])->name('productshow');
         Route::post('/product/create', [ProductController::class, 'create']);
         Route::post('/product/edit', [ProductController::class, 'edit']);
-
     });
-    
     Route::get('/login', [AdminController::class, 'AdminLoginView'])->name('AdminLoginView');
     Route::post('/adminlogin',[AdminController::class,'AdminLogin']); 
 });
 
-Route::get('/',[HomeController::class,'Index']);
+Route::get('/',[ShopController::class,'Index']);
+Route::get('/product/{id}',[ShopController::class,'show']);
+Route::get('/shoppingcart',[ShopController::class,'shoppingcart']);
+Route::post('/buy',[ShopController::class,'Buy']);
